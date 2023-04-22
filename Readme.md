@@ -1,10 +1,9 @@
 # The Warrior Awaits
 Cool Parallax effect with AI in `html` `css` `js` and **Midjourney**
 
-### Js Animation library
-`gsap` 
+#### With `gsap` Js Animation library
 
-### Smooth Scroll
-`Lenis`
+Smooth Scroll enabled by `Lenis`
+
 
 > Image Generated with **Midjourney**
