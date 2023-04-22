@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <section>
+        <p>Scroll</p>
+    </section>
+    <section class="container">
+        <div class="wrapper">
+            <h1 class="text-mask">
+                <span>The Warrior Awaits</span>
+            </h1>
+            <div class="bg2"></div>
+            <div class="mountains"></div>
+            <div class="soldier"></div>
+        </div>
+
+    </section>
+    <section></section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+        integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"
+        integrity="sha512-AMl4wfwAmDM1lsQvVBBRHYENn1FR8cfOTpt8QVbb/P55mYOdahHD4LmHM1W55pNe3j/3od8ELzPf/8eNkkjISQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
+
+    <script>
+
+        // smooth scroll
+        const lenis = new Lenis()
+
+        // lenis.on('scroll', (e) => {
+        //     console.log(e)
+        // })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+
+        // variables
+        const bg1 = document.querySelector('.wrapper')
+        const bg2 = document.querySelector('.bg2')
+        const mountains = document.querySelector('.mountains')
+        const soldier = document.querySelector('.soldier')
+        const h1 = document.querySelector('h1 span')
+
+        // gsap
+        // create a timeline
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.wrapper',
+                start: 'top bottom',
+                // end: 'bottom bottom',
+                scrub: true,
+                // pin: true,
+                // markers: true
+            }
+        })
+
+        // add animations to the timeline
+        gsap.set(soldier, { scale: 0.8 })
+
+        tl
+            .to(mountains, { scale: 1.4, y: 30 })
+            .to(soldier, { scale: 1.5, y: 90 }, 0)
+
+
+        gsap.from(h1, {
+            yPercent: 100,
+            scrollTrigger: {
+                trigger: soldier,
+                start: "top bottom",
+                scrub: true
+            }
+        })
+
+    </script>
+</body>
+
+</html>
